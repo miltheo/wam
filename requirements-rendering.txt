@@ -1,0 +1,5 @@
+# Python figure assembly only; R runs the statistical analyses.
+matplotlib
+numpy
+pandas
+Pillow

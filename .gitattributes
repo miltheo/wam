@@ -1,0 +1,6 @@
+# Preserve checksum-verified observations exactly across operating systems.
+* text=auto
+data/masters/** -text
+hardware/device-clips/*.3mf -text
+*.png binary
+*.pdf binary

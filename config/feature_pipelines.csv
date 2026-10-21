@@ -1,0 +1,17 @@
+"metric","metric_label","metric_family","metric_unit","input_type","performance_rank"
+"DOMFREQ_CLASS_5S","Dominant frequency (5-s modal)","Frequency-domain","Hz","frequency",1
+"DOMPEAKMAG_CLASS_5S","Dominant peak magnitude","Frequency-domain","mg","amplitude",2
+"MIMS_ALTERED_02_10","MIMS-unit (altered 0.2-10 Hz)","Algorithm-defined summary","MIMS-units per 5-s epoch","amplitude",3
+"SVMBP_02_15","SVMbp 0.2-15 Hz","Band-pass resultant","mg","amplitude",4
+"SVMBP_069_10","SVMbp 0.69-10 Hz","Band-pass resultant","mg","amplitude",5
+"ODBA","ODBA (3-s centred mean)","Static-dynamic separation","mg","amplitude",6
+"VM","VM","Resultant amplitude","g","amplitude",7
+"SVMGSEC","SVMg.s","Gravity-subtracted amplitude","g s per 5-s epoch","amplitude",8
+"AI","Activity Index","Noise-adjusted variance","g per 5-s epoch","amplitude",9
+"ENMO","ENMO","Gravity-subtracted amplitude","mg","amplitude",10
+"SVMGMEAN","Mean SVMg","Gravity-subtracted amplitude","mg","amplitude",11
+"ROCAM","ROCAM","Rate-of-change","g/sample change","amplitude",12
+"MIMS_DEFAULT_02_05","MIMS-unit (default 0.2-5 Hz)","Algorithm-defined summary","MIMS-units per 5-s epoch","amplitude",13
+"SVMGS","GENEActiv-style SVMgs","Gravity-subtracted amplitude","g samples per 5-s epoch","amplitude",14
+"AG","ActiGraph counts","Algorithm-defined count","counts per 5-s epoch","amplitude",15
+"MAD","MAD","Amplitude dispersion","mg","amplitude",16

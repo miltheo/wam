@@ -1,0 +1,14 @@
+number,source,title
+2,static/static_manuscript_table.csv,Device-level 24-hour static metrology
+3,dynamic_native/tables/native_dynamic_profile_manuscript_table.csv,Native dynamic metrology in the primary comparison
+4,features/tables/primary_native_10pct.csv,Regional equivalence and full-range criteria in the primary comparison
+S3,diagnostics/combined_results_table.csv,Signal diagnostics in static and dynamic recordings
+S4,diagnostics/timing_summary.csv,Reference-timing diagnostics for native dynamic signals
+S5,timing_sensitivity/summary.csv,Sensitivity to reference pairing and apparent-event alignment
+S7,features/condition_mapping.csv,Shaker conditions and behavioural analogues
+S8,activation/tables/Table_activation_deadband_summary_wide.csv,Low-excitation deadband and activation threshold
+S10,diagnostics/static_axis_summary.csv,SENS motion quantisation and Allan minima
+S11,secondary_native/tables/secondary_native_dynamic_profile_manuscript_table.csv,Native dynamic metrology in the secondary comparison
+S12,configuration/tables/configuration_sensitivity_compact_table_with_p.csv,Acquisition-configuration sensitivity
+S13,features/tables/secondary_native_10pct.csv,Native feature criteria in the secondary comparison
+S14,features/regional_posthoc/pipeline_results.csv,Post hoc regional equivalence across both native comparisons
