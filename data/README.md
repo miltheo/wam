@@ -1,32 +1,42 @@
-# Study master observations
+# Master observations
 
-`masters/` contains the selected static, dynamic, feature and diagnostic inputs.
-Their filenames are unversioned; `config/inputs.csv` records byte counts and
-SHA-256 checksums. Relocating these files does not require changing the analyses:
-set `WAM_MASTER_ROOT` to their new directory.
+Inputs for the analyses in the research article under submission.
+Byte counts and SHA-256 checksums: [inputs.csv](../code/inputs.csv).
+RDS files are read with `readRDS()`; CSV files with `read.csv()`.
 
-The masters include one row per relevant unit, trial, stage, feature or diagnostic
-observation. Native recordings, fitted statistical models, publication images and
-duplicated per-device exports are not included.
+| File | Observations |
+|---|---|
+| `static.rds` | Unit-level static outcomes |
+| `static_allan_curves.csv` | Unit/axis Allan-deviation curves |
+| `static_axis_diagnostics.csv` | Stationary axis diagnostics |
+| `dynamic_primary_overall.rds` | Primary trial-level dynamic outcomes |
+| `dynamic_primary_stages.rds` | Primary stage-level dynamic outcomes |
+| `dynamic_secondary_overall.rds` | Secondary trial-level dynamic outcomes |
+| `dynamic_secondary_stages.rds` | Secondary stage-level dynamic outcomes |
+| `configuration_overall.rds` | Trial-level acquisition-configuration outcomes |
+| `configuration_stages.rds` | Stage-level acquisition-configuration outcomes |
+| `features_primary.rds` | Primary native/calibrated feature observations |
+| `features_secondary_native.rds` | Secondary native feature observations |
+| `features_secondary_calibrated.rds` | Secondary calibrated feature observations |
+| `frequency_stages.csv` | Stage-level frequency estimates |
+| `gravity_orientation_stages.csv` | Gravity-vector orientation observations |
+| `activation_stages.rds` | Low-excitation response observations |
+| `signal_diagnostics.csv` | Recording/stage-level diagnostic outcomes |
+| `spectral_audit.csv` | Axis-specific spectral observations |
+| `timing_stages.csv` | Within-stage reference-timing diagnostics |
+| `timing_pooled.csv` | Pooled reference-timing diagnostics |
+| `pairing_trials.csv` | Trial outcomes under alternative reference pairing |
+| `event_stage_outcomes.csv` | Stage outcomes under alternative event alignment |
+| `event_trial_outcomes.csv` | Trial outcomes under alternative event alignment |
 
-The static/dynamic metrology and feature masters retain the selected study
-values. Timing sensitivity uses already-calculated trial/stage outcomes for
-alternative pairing/alignment arms; WAM refits their statistical comparisons.
-Allan curves are stored outcome observations from the existing unit calculations;
-they are not reconstructed from the minimum values in the static summary.
-The gravity-vector orientation master retains the existing per-unit, trial and
-stage observations used for the supplementary mounting-stability diagnostic.
+Set `WAM_MASTER_ROOT` to relocate these inputs. Definitions and study methods
+are provided in the associated research article under submission; package-level
+documentation is maintained with Metronautica (repository link pending).
 
-WAM distributes separate single-unit native examples as release attachments
-and a primary HBK reference for the companion Metronautica package. Those examples demonstrate the package and do not
-replace these full-cohort master inputs.
+Optional native recordings are documented in [samples](../samples/README.md).
+They are independent of these full-cohort analysis inputs.
 
-Data redistribution terms are separate from the GPL-3 software licence.
-No additional data licence is assigned by this repository.
+Data-distribution terms are separate from the [GPL-3 software licence](../LICENSE).
+No data licence is assigned here.
 
-## Optional native examples
-
-`samples/native/` contains the catalogue and provenance for single-unit native
-examples distributed as release attachments, including the paired HBK reference. They are independent of `masters/` and are
-not used by the WAM manuscript-reproduction workflow. See
-[sample distribution](samples/README.md).
+Maintainer: [Millen J. Theophilus](https://github.com/miltheo).

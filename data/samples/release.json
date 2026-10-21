@@ -1,9 +1,0 @@
-{
-  "schema_version": 1,
-  "data_version": "1.0.0",
-  "release_tag": "sample-data-v1.0.0",
-  "base_url": null,
-  "catalog": "native/sample_index.csv",
-  "provenance": "native/provenance.json",
-  "distribution": "release-assets"
-}

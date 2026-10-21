@@ -1,14 +1,12 @@
 # Generated runtime outputs.
-/analysis/**
-/results/**
+/analysis/
+/results/
 .Rhistory
 .RData
 .Ruserdata
 .Rproj.user/
 .Renviron
 .env
-__pycache__/
-*.pyc
 *.Rcheck/
 *.tar.gz
 Rplots.pdf
@@ -17,4 +15,4 @@ Rplots.pdf
 /metronautica-samples/
 
 # Native sample payloads are distributed as release attachments.
-/data/samples/native/*.gz
+/samples/*.gz
