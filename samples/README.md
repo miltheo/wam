@@ -1,6 +1,6 @@
 # Native recording samples
 
-Sample-data tag: `sample-data-v1.0.0`. Nine gzip attachments (63.4 MB compressed;
+Nine gzip attachments (63.4 MB compressed;
 approximately 250.2 MB restored). Payloads are excluded from Git history.
 
 - LEAP, AX3, SENS motion and GENEActiv: one 24-hour static recording and one
@@ -31,7 +31,7 @@ or `metronautica.sample_base_url`. Reference access: `attr(path, "reference_file
 and `attr(path, "reference_info")`. See `help("m_load_sample_data", package = "metronautica")`.
 
 ```sh
-Rscript code/check_samples.R --require-all
+Rscript code/checks/check_samples.R --require-all
 ```
 
 Samples demonstrate Metronautica; WAM analyses use the [masters](../data/README.md).

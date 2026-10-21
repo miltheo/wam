@@ -1,7 +1,7 @@
 device,file,width_mm,depth_mm,height_mm,axes,sha256
-AX3,AX3_angled2.3mf,36.1,37.5,40.3,"width=X, depth=Y, height=Z",2aba285347264ca1da04f30f9eebc79d47790b4dee5f54439a5964443aae7240
-GENEActiv 1.2,GENEActiv_angled_v5.3mf,46.9,42.0,60.0,"width=X, depth=Y, height=Z",3fd01de155c7b5130b21e438e548f857b19d6a7646ac65ba3e672dac67f46500
-ActiGraph LEAP,LEAP_angled.3mf,48.3,41.6,56.7,"width=X, depth=Y, height=Z",6c1da20b2ac93e394cb8e87abc2d4b3fa47ba11d36f0d5d14156a99b9f9fccc0
-ActiGraph wGT3X-BT,GT3X_angled_v7.3mf,52.3,47.3,61.6,"width=X, depth=Y, height=Z",6d09d9946a2ec3d8cae1f8921f3da6b4407f0e6ebf3c9d3f9ae37e3991ce2c43
-ActiGraph GT9X Link,GT9X_angled.3mf,45.3,37.6,55.8,"width=X, depth=Y, height=Z",725180c1fe030bd481d8a6b1f01e134c0e24891eb9b39889026498fa068eff82
-SENS motion,SENS_angled.3mf,26.7,26.0,31.5,"width=X, depth=Y, height=Z",3f3b625730207503f031e1ded49a71133642fbddc46c0576c15e23626b523768
+AX3,ax3.3mf,36.1,37.5,40.3,"width=X, depth=Y, height=Z",2aba285347264ca1da04f30f9eebc79d47790b4dee5f54439a5964443aae7240
+GENEActiv 1.2,geneactiv.3mf,46.9,42.0,60.0,"width=X, depth=Y, height=Z",3fd01de155c7b5130b21e438e548f857b19d6a7646ac65ba3e672dac67f46500
+ActiGraph LEAP,leap.3mf,48.3,41.6,56.7,"width=X, depth=Y, height=Z",6c1da20b2ac93e394cb8e87abc2d4b3fa47ba11d36f0d5d14156a99b9f9fccc0
+ActiGraph wGT3X-BT,wgt3x-bt.3mf,52.3,47.3,61.6,"width=X, depth=Y, height=Z",6d09d9946a2ec3d8cae1f8921f3da6b4407f0e6ebf3c9d3f9ae37e3991ce2c43
+ActiGraph GT9X Link,gt9x-link.3mf,45.3,37.6,55.8,"width=X, depth=Y, height=Z",725180c1fe030bd481d8a6b1f01e134c0e24891eb9b39889026498fa068eff82
+SENS motion,sens-motion.3mf,26.7,26.0,31.5,"width=X, depth=Y, height=Z",3f3b625730207503f031e1ded49a71133642fbddc46c0576c15e23626b523768

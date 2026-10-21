@@ -28,7 +28,7 @@ wam_check_setup <- function(cfg, check_inputs = TRUE) {
     if (a == b || startsWith(a, paste0(b, "/")) || startsWith(b, paste0(a, "/")))
         stop("Analysis and results must be separate, non-nested directories.")
     if (check_inputs) {
-        index <- utils::read.csv(file.path(cfg$root, "code", "inputs.csv"), stringsAsFactors = FALSE)
+        index <- utils::read.csv(file.path(cfg$root, "code", "settings", "inputs.csv"), stringsAsFactors = FALSE)
         for (i in seq_len(nrow(index))) {
             path <- file.path(cfg$masters, index$file[i])
             if (!file.exists(path)) stop("Missing master: ", path)
@@ -40,7 +40,7 @@ wam_check_setup <- function(cfg, check_inputs = TRUE) {
 }
 
 wam_load_code <- function(cfg, envir = parent.frame()) {
-    paths <- list.files(file.path(cfg$root, "code"), pattern = "[.]R$", full.names = TRUE)
+    paths <- list.files(file.path(cfg$root, "code"), pattern = "[.]R$", full.names = TRUE, recursive = TRUE)
     modules <- paths[!grepl("^(setup|config|run)[.]R$|^[0-9]{2}_|^check_", basename(paths))]
     for (path in modules) sys.source(path, envir = envir)
     invisible(envir)
@@ -94,7 +94,7 @@ wam_run <- function(stage, cfg) {
             activation = {env$wam_activation(cfg); env$wam_activation_figure(cfg)},
             threshold_transfer = env$wam_threshold_transfer(cfg),
             export = env$wam_export(cfg))
-        # Current-run provenance; no copies of old analysis runs or result versions.
+        # Record the runtime environment and package API used for each stage.
         provenance <- file.path(cfg$output, "provenance")
         dir.create(provenance, recursive = TRUE, showWarnings = FALSE)
         writeLines(c(paste("metronautica", utils::packageVersion("metronautica")),
