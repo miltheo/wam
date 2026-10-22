@@ -125,7 +125,7 @@ wam_threshold_transfer <- function(cfg) {
       scale_colour_manual(values=cols)+scale_fill_manual(values=cols)+
       scale_x_continuous(breaks=c(1,15,30,45,60),expand=expansion(mult=c(.025,.03)))+
       labs(title='A. Projected static VM offset bias',subtitle='60-day span; conditional 95% CIs',
-           x='Measurement day',y='Signed 1-g VM offset bias (mg)')+theme_p
+           x='Measurement day',y=expression("Signed 1-"*italic(g)*" VM offset bias (m"*italic(g)*")"))+theme_p
     
     group_order<-c(paste('Primary comparison',c('AX3','GENEActiv','LEAP','SENS motion'),sep=': '),
                    paste('Secondary comparison',c('LEAP','wGT3X-BT','GT9X Link'),sep=': '))
@@ -142,7 +142,7 @@ wam_threshold_transfer <- function(cfg) {
         geom_point(aes(shape=cohort),colour='grey25',size=2.5,stroke=.4)+
         scale_shape_manual(values=c('Primary comparison'=21,'Secondary comparison'=24),guide='none')+
         facet_grid(cohort~boundary,scales='free_y',space='free_y',
-          labeller=labeller(boundary=labs_facet,cohort=c('Primary comparison'='Primary\ncomparison',
+          labeller=labeller(boundary=as_labeller(function(x) as.character(wam_gravity_labels(unname(labs_facet[x]))),default=label_parsed),cohort=c('Primary comparison'='Primary\ncomparison',
                                                       'Secondary comparison'='Secondary\ncomparison')))+
         scale_colour_manual(values=cols)+scale_fill_manual(values=cols)+
         scale_y_continuous(breaks=7:1,labels=device_labels,expand=expansion(add=.5))+
@@ -205,7 +205,7 @@ wam_threshold_transfer <- function(cfg) {
         scale_x_continuous(breaks=function(limits){if(limits[2]>1.3)c(0,.5,1,1.5)else c(0,.25,.5,.75,1)},
                            expand=expansion(mult=c(.02,.02)),
                            sec.axis=dup_axis(name=NULL,breaks=cutoff_breaks,labels=function(x)sprintf('%.4f',x)))+
-        labs(title=paste0(letter,'. ',title),subtitle=subtitle,x='Native feature value (g)',y='Orbital shaker condition')+theme_p+
+        labs(title=paste0(letter,'. ',title),subtitle=subtitle,x=expression("Native feature value ("*italic(g)*")"),y='Orbital shaker condition')+theme_p+
         theme(strip.text=element_text(size=9.5,face='bold'),strip.placement='outside',panel.spacing.x=grid::unit(18,'pt'),
               plot.subtitle=element_text(size=10,margin=margin(b=10)),
               axis.text.y=element_text(size=8.5,lineheight=1,margin=margin(r=7)),
@@ -219,13 +219,13 @@ wam_threshold_transfer <- function(cfg) {
                linetype=guide_legend(order=3,nrow=1,override.aes=list(linewidth=.65)))
     }
     d<-native_plot(c('ENMO','SVMBP_069_10'),'D','Native response profiles and cutoffs',
-                   'Unit values, model means and 95% CIs; upper ticks: cutoffs (g)')
+                   expression("Unit values, model means and 95% CIs; upper ticks: cutoffs ("*italic(g)*")"))
     main<-arrangeGrob(arrangeGrob(a,b,c,ncol=3,widths=c(.95,1.15,1.15)),d,ncol=1,heights=c(1,1.16))
     save_fig(main,'threshold-transfer',16,9.8)
     
     mad_a<-duration_plot('MAD','A','MAD (published cutoffs)','60 min equally across seven conditions')
     mad_b<-native_plot('MAD','B','Native MAD response profiles and cutoffs',
-                      'Unit values, model means and 95% CIs; upper ticks: cutoffs (g)')
+                      expression("Unit values, model means and 95% CIs; upper ticks: cutoffs ("*italic(g)*")"))
     supp<-arrangeGrob(mad_a,mad_b,ncol=1,heights=c(1,1.55))
     save_fig(supp,'mad-threshold-transfer',12.5,9.2)
     

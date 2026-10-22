@@ -492,7 +492,7 @@ wam_configuration <- function(cfg) {
             size = 2.2,
             stroke = 0.45
         ) +
-        facet_grid(metric_label ~ instrument, scales = "free_y", switch = "y") +
+        facet_grid(metric_label ~ instrument, scales = "free_y", switch = "y", labeller = labeller(metric_label = as_labeller(function(x) as.character(wam_gravity_labels(x)), default = label_parsed))) +
         scale_colour_manual(values = condition_colours, name = "Configuration") +
         scale_fill_manual(values = condition_fills, name = "Configuration") +
         scale_linetype_manual(values = c("Primary configuration" = "solid", "Secondary configuration" = "22"), name = "Configuration") +

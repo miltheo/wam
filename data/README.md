@@ -29,6 +29,30 @@ RDS files are read with `readRDS()`; CSV files with `read.csv()`.
 | `diagnostics/event_stage_outcomes.csv` | Stage outcomes under alternative event alignment |
 | `diagnostics/event_trial_outcomes.csv` | Trial outcomes under alternative event alignment |
 
+## Row structure and identifiers
+
+| Master family | One row represents | Identifiers and interpretation |
+|---|---|---|
+| Static outcomes | One physical unit | `instrument`, `id`; axis-prefixed fields describe X/Y/Z or VM |
+| Dynamic overall | One unit, trial and processing pipeline | `instrument`, `id`, `trial_start_utc`, `pipeline`; secondary/configuration files also retain trial identifiers |
+| Dynamic stages | One unit, trial, pipeline and excitation stage | Overall identifiers plus `stage`; `rpm.x`/`rpm.y` are retained joined labels; configuration files additionally supply `rpm` |
+| Feature outcomes | One unit, trial, stage, feature and signal pipeline | `device_id`, `trial_start_utc`, `stage_name`, `metric`, `signal_pipeline`; `metric_unit` specifies the value unit; inspect `was_computed`/`error_message` before use |
+| Activation stages | One unit and low-excitation stage | `instrument`, `id`, `stage_index`, `nominal_rpm`; measured excitation and reference fields remain separate |
+| Diagnostic and auxiliary CSVs | The recording, stage, axis or pairing named by their identifier columns | Retain those identifiers when joining; these files have different row structures |
+
+Primary comparisons cover LEAP, AX3, GENEActiv and SENS motion; secondary
+comparisons cover LEAP, wGT3X-BT and GT9X Link. `native` denotes the decoded signal
+without the additional dynamic VM calibration; calibrated observations retain
+their signal-pipeline and calibration fields. Each file stores observations,
+not independent participants or already pooled device estimates.
+
+For outcome definitions and units, use Metronautica's installed
+`help("measurement-definitions", package = "metronautica")` and linked function
+references. Feature values follow `metric_unit`; suffixes such as `_g`, `_mg`,
+`_hz` and `_percent` identify units where present. Unsuffixed legacy fields must
+be interpreted using the corresponding function reference; a fraction is not
+a percentage. Study-level definitions remain in the research article.
+
 Set `WAM_MASTER_ROOT` to relocate these inputs. Definitions and study methods
 are provided in the associated research article under submission; package-level
 documentation is maintained with [Metronautica](https://github.com/miltheo/metronautica).

@@ -1,6 +1,6 @@
 # Reproduce the analyses
 
-[Repository](../README.md) · [Output index](OUTPUTS.md) · [Master observations](../data/README.md)
+[Repository](../README.md) &middot; [Output index](OUTPUTS.md) &middot; [Master observations](../data/README.md)
 
 Run commands from the WAM repository root. The workflow starts from master
 observations; native recordings and 3D-printing software are not required.

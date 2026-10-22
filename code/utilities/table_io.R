@@ -28,3 +28,30 @@ wam_write_text <- function(text, path) {
     writeBin(charToRaw(enc2utf8(gsub("\r?\n", "\r\n", text))), path)
     invisible(path)
 }
+
+# Display-only gravity typography; machine-readable names and values are unchanged.
+wam_gravity_labels <- function(labels) {
+    one_line <- function(text) {
+        pattern <- "(?<![[:alnum:]_])(micro-g|ug|mg|g)(?![[:alnum:]_])"
+        hits <- gregexpr(pattern, text, perl = TRUE)[[1L]]
+        if (hits[1L] < 0L) return(encodeString(text, quote = '"'))
+        widths <- attr(hits, "match.length"); parts <- character(); start <- 1L
+        for (i in seq_along(hits)) {
+            if (hits[i] > start) parts <- c(parts, encodeString(substr(text, start, hits[i]-1L), quote = '"'))
+            unit <- substr(text, hits[i], hits[i]+widths[i]-1L)
+            parts <- c(parts, switch(unit, g = "italic(g)", mg = "plain(m)*italic(g)",
+                ug = "mu*italic(g)", `micro-g` = "mu*italic(g)"))
+            start <- hits[i]+widths[i]
+        }
+        if (start <= nchar(text)) parts <- c(parts, encodeString(substring(text,start),quote='"'))
+        paste(parts,collapse="*")
+    }
+    code <- vapply(labels, function(text) {
+        lines <- vapply(strsplit(text, "\n", fixed = TRUE)[[1L]], one_line, character(1))
+        out <- tail(lines,1L)
+        if (length(lines)>1L) for(i in rev(seq_len(length(lines)-1L)))
+            out <- paste0("atop(",lines[i],",",out,")")
+        out
+    }, character(1), USE.NAMES=FALSE)
+    parse(text=code)
+}

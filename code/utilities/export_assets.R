@@ -5,7 +5,11 @@ wam_tex <- function(value) {
         r"(\#)", r"(\$)", r"(\{)", r"(\})", r"(\newline )"),
         c("\\", "&", "%", "_", "#", "$", "{", "}", "\n"))
     hit <- chars %in% names(map); chars[hit] <- unname(map[chars[hit]])
-    paste(chars, collapse = "")
+    text <- paste(chars, collapse = "")
+    text <- gsub(r"((?<![[:alnum:]_])(m?)(g)(?![[:alnum:]_]))",
+        r"(\1\\textit{g})", text, perl = TRUE)
+    gsub(r"((?<![[:alnum:]_])(micro-g|ug)(?![[:alnum:]_]))",
+        r"($\\mu$\\textit{g})", text, perl = TRUE)
 }
 
 wam_ptext <- function(value) if (as.numeric(value) < .001) "<0.001" else sprintf("%.3f", as.numeric(value))

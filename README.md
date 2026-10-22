@@ -3,7 +3,7 @@
 Wearable Accelerometers Metrology (WAM): master observations and R analyses
 supporting the associated research article under submission.
 
-**Master observations → analysis stages → intermediate results → numbered figures and tables.**
+**Master observations &rarr; analysis stages &rarr; intermediate results &rarr; numbered figures and tables.**
 
 WAM reproduces selected code-generated article assets from the supplied masters.
 Native recordings are optional examples for [Metronautica](https://github.com/miltheo/metronautica);
@@ -28,7 +28,7 @@ Rscript code/run.R all
 Rscript code/checks/check_results.R
 ```
 
-[Execution and prerequisites](code/README.md) · [Output index](code/OUTPUTS.md) ·
+[Execution and prerequisites](code/README.md) &middot; [Output index](code/OUTPUTS.md) &middot;
 [Verification](code/README.md#verification).
 
 ## Contents

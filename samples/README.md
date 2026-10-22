@@ -9,7 +9,7 @@ static and dynamic recordings for LEAP, AX3, SENS motion and GENEActiv, plus one
 primary HBK reference. Static files cover the analysed 24 hours; dynamic files
 retain all ten stages and intervening adjustments of the first primary trial.
 
-[Catalogue and checksums](sample_index.csv) · [Record provenance](provenance.json) ·
+[Catalogue and checksums](sample_index.csv) &middot; [Record provenance](provenance.json) &middot;
 [Release metadata](release.json).
 
 ## Obtain the recordings
@@ -29,29 +29,15 @@ published release-attachment directory as `base_url` or
 `options(metronautica.sample_base_url = ...)`. The loader downloads only when
 explicitly called; installation and ordinary package use require no WAM access.
 
-## Load a sample
+## Use with Metronautica
 
-Run in R from the WAM root after obtaining the attachments:
-
-```r
-library(metronautica)
-options(metronautica.sample_dir = "samples")
-path <- m_load_sample_data(device = "LEAP", type = "dynamic")
-info <- attr(path, "sample_info")
-accel <- parse_raw_auto(path, return = "bundle", qc = TRUE,
-    time_shift_s = info$time_shift_s,
-    full_scale_range_g = info$full_scale_range_g)
-accel_meta(accel)$processing$qc
-```
-
-Restored files and provenance sidecars go into `metronautica-samples/` by default,
-which is excluded from Git. Compressed and restored SHA-256 digests are verified.
-The reference path is `attr(path, "reference_file")`; its metadata is
-`attr(path, "reference_info")`. Apply each file's own documented timestamp shift.
-
-For complete static/dynamic processing and plots, use Metronautica's
-[Getting Started guide](https://github.com/miltheo/metronautica/blob/main/docs/GETTING_STARTED.md)
-and `help("m_load_sample_data", package = "metronautica")`.
+Use the [Metronautica loader guide](https://github.com/miltheo/metronautica/blob/main/docs/REAL_DATA_EXAMPLES.md#sample-retrieval)
+for `m_load_sample_data()` configuration and the
+[worked examples](https://github.com/miltheo/metronautica/blob/main/docs/GETTING_STARTED.md#real-recording-examples)
+for parsing, metrology and plots. Each recording's timestamp shift, range and
+analysis bounds are supplied by the catalogue; apply the reference recording's
+own settings separately. The loader verifies compressed/restored checksums and
+writes provenance sidecars without modifying the source attachments.
 
 ## Verify and distribute
 

@@ -235,8 +235,8 @@ wam_static <- function(cfg) {
     
     metrics <- tibble::tribble(
         ~metric,                                      ~var,                       ~unit,  ~digits,
-        "Signed 1-g VM offset bias",                 "vm_offset_mg",             "mG",   1,
-        "Signed VM drift rate",                      "vm_drift_mg_h",            "mG/h", 4,
+        "Signed 1-g VM offset bias",                 "vm_offset_mg",             "mg",   1,
+        "Signed VM drift rate",                      "vm_drift_mg_h",            "mg/h", 4,
         "24 h max-axis static noise floor",          "static_noise_floor_mg",    "mg",   3,
         "Maximum-axis Allan minimum",                "allan_max_ug",             "ug",   1
     )
@@ -313,8 +313,8 @@ wam_static <- function(cfg) {
         tidyr::pivot_wider(names_from = var, values_from = mean_ci_letters) |>
         dplyr::rename(
             Instrument = device,
-            `1-g VM offset bias, mG` = vm_offset_mg,
-            `VM drift, mG/h` = vm_drift_mg_h,
+            `1-g VM offset bias, mg` = vm_offset_mg,
+            `VM drift, mg/h` = vm_drift_mg_h,
             `24 h max-axis static noise floor, mg` = static_noise_floor_mg,
             `Max-axis Allan minimum, ug` = allan_max_ug
         ) |>
