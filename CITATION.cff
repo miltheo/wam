@@ -5,5 +5,6 @@ type: software
 authors:
   - family-names: Theophilus
     given-names: Millen James
+    orcid: "https://orcid.org/0000-0001-9823-7177"
 license: GPL-3.0-only
 repository-code: "https://github.com/miltheo/wam"

@@ -1,70 +1,137 @@
-# Study code
+# Reproduce the analyses
 
-R code is grouped into `stages/`, `analysis/`, `figures/`, `utilities/`,
-`checks/` and `settings/`. `run.R`, `setup.R` and `config.R` are the entry and setup files. Run commands
-from the WAM root.
+[Repository](../README.md) · [Output index](OUTPUTS.md) · [Master observations](../data/README.md)
+
+Run commands from the WAM repository root. The workflow starts from master
+observations; native recordings and 3D-printing software are not required.
 
 ## Installation
 
-Install metronautica from its source directory:
+Install [Metronautica](https://github.com/miltheo/metronautica) and its runtime
+dependencies following its installation guide. For a downloaded source directory,
+run in R:
 
-```sh
-R CMD INSTALL /path/to/metronautica
+```r
+install.packages("path/to/metronautica", repos = NULL, type = "source")
 ```
 
-Install the study dependencies in R (dplyr >= 1.1.0):
+Install WAM dependencies in R; dplyr >= 1.1.0 is required:
 
 ```r
 install.packages(c("dplyr", "tidyr", "tibble", "ggplot2", "nlme", "digest",
                    "ragg", "gridExtra", "scales", "ggrepel", "png"))
 ```
 
-## Execution
+## Metronautica compatibility
+
+Tested with **metronautica 0.1.0**, clean source commit
+[`eae8c2f566ef51986df55e1d32d957d4162bd42d`](https://github.com/miltheo/metronautica/commit/eae8c2f566ef51986df55e1d32d957d4162bd42d).
+WAM checks for metronautica >= 0.1.0 and the required public functions. Run setup
+and integration checks after changing the installed engine.
+
+The masters retain the observations used for the article. Installing an updated
+parser, filter or count implementation does not recalculate those observations.
+Package-level processing examples belong to Metronautica; WAM supplies the
+cohort analyses and article-asset assembly.
+
+## First run
+
+In a terminal:
 
 ```sh
 Rscript code/run.R --check
+Rscript code/run.R --list
+Rscript code/run.R static
+```
+
+`--check` verifies dependencies, the package interface, paths and master checksums
+without running an analysis. The static command runs one independent stage.
+For the complete workflow:
+
+```sh
 Rscript code/run.R all
 Rscript code/checks/check_results.R
 ```
 
-`run.R` accepts `--list`, `--check`, a stage name or `all`.
+`all` executes the nine stages in order. Feature bootstrap analyses and figure
+rendering can take longer than setup checks; allow the process to finish.
 
-| Entry point | Stage | Prerequisites |
+## Stages
+
+| Stage command | Analysis | Required completed stages |
 |---|---|---|
-| `stages/01_static.R` | `static` | None |
-| `stages/02_dynamic.R` | `dynamic` | None |
-| `stages/03_features.R` | `features` | None |
-| `stages/04_diagnostics.R` | `diagnostics` | None |
-| `stages/05_sensitivity.R` | `sensitivity` | `dynamic` |
-| `stages/06_frequency.R` | `frequency` | `features` |
-| `stages/07_activation.R` | `activation` | None |
-| `stages/08_threshold_transfer.R` | `threshold_transfer` | `static`, `features` |
-| `stages/09_export.R` | `export` | All preceding stages |
+| `static` | Static group comparisons and figure | None |
+| `dynamic` | Primary/secondary dynamic and processing comparisons | None |
+| `features` | Response, equivalence, regional post hoc tests and figures | None |
+| `diagnostics` | Signal, reference-timing, Allan and spectral summaries | None |
+| `sensitivity` | Configuration, pairing and event-alignment sensitivity | `dynamic` |
+| `frequency` | Supplementary frequency estimators and tracking | `features` |
+| `activation` | Low-excitation activation threshold and deadband | None |
+| `threshold_transfer` | Exploratory drift and threshold transfer | `static`, `features` |
+| `export` | Numbered article assets and manifest | All analysis stages |
 
-Example: `Rscript code/stages/03_features.R` or `Rscript code/run.R features`.
+Use `Rscript code/run.R features` to run a named stage. Equivalent numbered entry
+scripts are in `stages/`. Requested stages do not automatically run prerequisites.
+Run `export` after the analyses to populate `results/`; a single analysis stage
+normally writes intermediate outputs under `analysis/`.
 
-## R modules
+## Paths and outputs
 
-| File(s) | Function |
+| Location | Contents |
 |---|---|
-| `config.R`, `setup.R` | Paths, dependency checks, module loading and stage dispatch |
-| `analysis/static.R`, `figures/static_figure.R` | Static statistics and figure |
-| `analysis/dynamic_native.R`, `analysis/dynamic_secondary.R` | Primary/secondary native dynamic statistics |
-| `analysis/dynamic_processing.R`, `figures/composite_figure.R` | Processing comparisons and composite-error figure |
-| `figures/dynamic_figure.R` | Dynamic profiles |
-| `analysis/configuration.R` | Acquisition-configuration sensitivity |
-| `analysis/features.R`, `analysis/feature_statistics.R` | Feature response, equivalence and bootstrap intervals |
-| `analysis/regional_equivalence.R` | Joint regional tests and Holm adjustment |
-| `figures/feature_figures.R`, `figures/context_figures.R` | Feature, frequency-tracking and orientation figures |
-| `analysis/frequency.R`, `figures/frequency_figure.R` | Supplementary frequency estimators |
-| `analysis/activation.R`, `figures/activation_figure.R` | Activation threshold and deadband |
-| `analysis/diagnostics.R` | Signal/reference diagnostics and Allan/spectral figures |
-| `analysis/timing_sensitivity.R` | Pairing and event-alignment sensitivity |
-| `analysis/threshold_transfer.R` | Exploratory drift and threshold transfer |
-| `analysis/export.R` | Condition mapping and final asset assembly |
+| `data/` | Input masters; filenames and SHA-256 digests in `settings/inputs.csv` |
+| `analysis/` | Stage statistics, supporting tables, plots and provenance |
+| `results/figures/` | Numbered figure PNGs and available PDF counterparts |
+| `results/tables/` | Numbered CSV tables and LaTeX fragments |
+| `results/assets.csv` | Registered final assets and SHA-256 digests |
 
-`wam_load_code()` loads function modules only; it excludes entry points and checks.
-For interactive use:
+The [output index](OUTPUTS.md) maps article numbers to producing stages and paths.
+Only registered, code-generated assets are exported. Source registries are
+`settings/figures.csv` and `settings/tables.csv`.
+
+Override paths before launching R through `WAM_MASTER_ROOT`, `WAM_ANALYSIS_ROOT`
+and `WAM_RESULTS_ROOT`. `WAM_R_LIBRARY` selects an additional R library. Keep
+masters and both output directories separate. Outputs remain excluded from Git.
+LaTeX fragments use `longtable`, `array`, `booktabs` and `pdflscape`.
+
+Each completed stage writes `analysis/provenance/<stage>_session.txt`.
+`analysis/provenance/metronautica_api.csv` records function hashes from the engine
+used by the most recently completed stage. Retain these records with the outputs;
+use a consistent engine environment for all stages of a reproduction run.
+
+## Verification
+
+| Terminal command | When to run | Verifies |
+|---|---|---|
+| `Rscript code/run.R --check` | Before analysis | Dependencies, API, paths and input checksums |
+| `Rscript code/checks/check_integration.R` | After engine installation/update | Package API, known-signal and statistical contracts |
+| `Rscript code/checks/check_tools.R` | Before analysis | R syntax, input integrity, registries and export formatting |
+| `Rscript code/checks/check_results.R` | After the complete workflow | Exported assets, hashes and expected study findings |
+| `Rscript code/checks/check_samples.R` | When using optional samples | Catalogue and available recording checksums |
+| `Rscript code/checks/check_samples.R --require-all` | Before distributing all attachments | All nine compressed and restored recording checksums |
+
+Checks do not refit the models. Missing optional sample payloads are permitted
+unless `--require-all` is supplied.
+
+## Troubleshooting
+
+| Message or symptom | Action |
+|---|---|
+| Missing package or API | Install the listed dependencies and the documented Metronautica revision; rerun `--check` |
+| Missing master/checksum mismatch | Restore the supplied master identified in `settings/inputs.csv`; check `WAM_MASTER_ROOT` |
+| Missing intermediate output | Run the stage prerequisites before the requested stage |
+| No numbered files after one analysis | Complete the analyses, then run `export` |
+| Missing sample attachment | Follow the [sample guide](../samples/README.md); samples are independent of the master-based workflow |
+| Graphics/font or numerical differences | Record `sessionInfo()` and stage provenance when reporting the difference |
+
+## Source layout
+
+`config.R` sets paths; `setup.R` checks the environment and dispatches stages.
+`analysis/` holds statistical functions, `figures/` holds plot construction,
+`utilities/` holds table/export/documentation helpers, `checks/` holds verification,
+and `settings/` holds the input and asset registries. `run.R` is the command-line entry.
+
+For interactive R use from the WAM root:
 
 ```r
 source("code/config.R")
@@ -75,55 +142,20 @@ wam_load_code(cfg)
 wam_static(cfg)
 ```
 
-## R utilities
+This final call computes static statistics; the stage command also renders its
+figure. Measurement definitions remain in the article and Metronautica reference.
 
-| File | Function |
-|---|---|
-| `utilities/diagnostic_tables.R` | Aggregate five-rule diagnostics |
-| `utilities/feature_tables.R` | Export equivalence/response tables |
-| `figures/spectral_figure.R` | Render spectral peaks and filter feasibility |
-| `figures/device_clips.R` | Assemble the hardware figure |
-| `utilities/export_assets.R` | Export numbered assets and checksums |
+## Documentation maintenance
 
-`utilities/table_io.R` preserves numeric strings during CSV/LaTeX export; `figures/figure_devices.R`
-provides PNG/PDF graphics devices.
+Regenerate `OUTPUTS.md` from the asset registries in R:
 
-## Analysis inputs
+```r
+source("code/utilities/documentation.R")
+wam_write_output_index()
+```
 
-| File | Content |
-|---|---|
-| `settings/inputs.csv` | Master filenames, sizes and SHA-256 checksums |
-| `settings/feature_pipelines.csv` | Pipeline labels, units and response inputs |
-| `settings/condition_mapping.csv` | RPM, frequency, acceleration and behavioural analogues |
-| `settings/threshold_cutoffs.csv` | ENMO/MAD cutoffs and source references |
-| `settings/figures.csv`, `settings/tables.csv` | Generated-asset mappings to article numbering |
+The index contains paths and stage mappings, not generated results. No model fits
+or figure rendering are performed by this helper.
 
-## Paths and outputs
-
-`config.R` defaults to `data/` for grouped masters, `analysis/` for intermediate outputs
-and `results/` for numbered assets. Override these paths through `WAM_MASTER_ROOT`,
-`WAM_ANALYSIS_ROOT` and `WAM_RESULTS_ROOT`. `WAM_R_LIBRARY` selects an additional
-R library. Input and output directories must be separate.
-
-Generated outputs are ignored by Git. CSV tables retain full precision; LaTeX
-fragments require `longtable`, `array`, `booktabs` and `pdflscape`.
-
-Definitions and methodological specifications are provided in the research article
-under submission and the Metronautica package documentation (repository link pending).
-
-## Verification
-
-Run from the WAM root. Checks do not refit study models.
-
-| Command | Verification |
-|---|---|
-| `Rscript code/checks/check_integration.R` | Metronautica API and numerical/statistical contracts |
-| `Rscript code/checks/check_tools.R` | Source syntax, input integrity and export formatting |
-| `Rscript code/checks/check_results.R` | Completed assets and study-result checks |
-| `Rscript code/checks/check_samples.R` | Catalogue and available sample checksums |
-| `Rscript code/checks/check_samples.R --require-all` | Require and verify all nine sample payloads |
-
-`checks/check_results.R` requires a completed workflow. Missing optional sample payloads
-are permitted unless `--require-all` is supplied.
-
-Maintainer: [Millen J. Theophilus](https://github.com/miltheo).
+Maintainer: [Millen James Theophilus](https://github.com/miltheo).
+Code, observations and mounting assets: [GPL-3.0-only](../LICENSE).

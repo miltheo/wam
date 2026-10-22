@@ -17,4 +17,7 @@ depth (Y) and height (Z), rounded to 0.1 mm, and model SHA-256 checksums.
 Dimensions describe model geometry, not printed-part tolerances. Previews are
 embedded 3MF thumbnails. Printer, material and slicer settings are unspecified.
 
-Maintainer: [Millen J. Theophilus](https://github.com/miltheo).
+Models, previews and dimension records are distributed under **GPL-3.0-only**;
+see [LICENSE](../LICENSE).
+
+Maintainer: [Millen James Theophilus](https://github.com/miltheo).

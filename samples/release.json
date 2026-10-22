@@ -1,5 +1,7 @@
 {
   "schema_version": 1,
+  "license": "GPL-3.0-only",
+  "license_url": "https://github.com/miltheo/wam/blob/main/LICENSE",
   "base_url": null,
   "catalog": "sample_index.csv",
   "provenance": "provenance.json",

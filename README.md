@@ -1,49 +1,65 @@
 # WAM
 
-Wearable Accelerometers Metrology (WAM).
-Statistical analyses and master observations supporting the associated research
-article under submission. The workflow reproduces numerical results and
-code-generated figures and tables from the supplied masters.
+Wearable Accelerometers Metrology (WAM): master observations and R analyses
+supporting the associated research article under submission.
 
-## Reproduction
+**Master observations → analysis stages → intermediate results → numbered figures and tables.**
 
-Requires R >= 4.1, **metronautica** and the dependencies in the
-[installation instructions](code/README.md#installation). Run from the repository root:
+WAM reproduces selected code-generated article assets from the supplied masters.
+Native recordings are optional examples for [Metronautica](https://github.com/miltheo/metronautica);
+they are not required to reproduce these analyses.
+
+## Get started
+
+Requires R >= 4.1, Metronautica and the [study dependencies](code/README.md#installation).
+Run these commands in a terminal from the WAM repository root:
 
 ```sh
 Rscript code/run.R --check
+Rscript code/run.R --list
+Rscript code/run.R static
+```
+
+The static stage creates local outputs under `analysis/static/`. To reproduce
+all registered assets and verify the completed run:
+
+```sh
 Rscript code/run.R all
 Rscript code/checks/check_results.R
 ```
 
-Individual stages and verification commands: [code](code/README.md).
+[Execution and prerequisites](code/README.md) · [Output index](code/OUTPUTS.md) ·
+[Verification](code/README.md#verification).
 
-## Repository structure
+## Contents
 
-| Directory | Contents |
+| Directory | Purpose |
 |---|---|
-| [code](code/README.md) | Stages, analyses, figures, utilities, checks and settings |
-| [data](data/README.md) | Static, dynamic, feature and diagnostic masters |
-| [samples](samples/README.md) | Native-example catalogue and provenance; payloads distributed as release attachments |
-| [3d-clips](3d-clips/README.md) | Mounting models and dimensions; thumbnails in `previews/` |
+| [code](code/README.md) | Analysis stages, figures, settings and checks |
+| [data](data/README.md) | Full-cohort master observations and input checksums |
+| [samples](samples/README.md) | Optional native-recording catalogue; payloads are separate release attachments |
+| [3d-clips](3d-clips/README.md) | Mounting models, previews and model dimensions |
 
-Generated `analysis/` and `results/` directories are local outputs, excluded from Git.
+Generated `analysis/` and `results/` directories are excluded from Git. The export
+stage writes numbered assets and their checksums to `results/assets.csv`.
 
-## Methods and documentation
+## Methods and reproducibility
 
-Measurement definitions and study specifications: the associated research article
-under submission. Package documentation: Metronautica repository (link pending).
+Measurement definitions and study specifications are provided in the research
+article under submission. Function parameters and package methods are documented
+in [Metronautica](https://github.com/miltheo/metronautica).
+The [code guide](code/README.md#metronautica-compatibility) records the tested engine revision;
+each analysis stage records its runtime environment and package API hashes.
 
-## Citation
+## Citation and licence
 
-Cite WAM using [CITATION.cff](CITATION.cff), and the associated
-research article under submission when referring to the study methods or findings.
+[CITATION.cff](CITATION.cff) provides software citation metadata. Cite the research
+article under submission for study methods and findings.
 
-## Maintainer
+**GPL-3.0-only** applies to the WAM code, master observations, native sample
+recordings, mounting models and previews; see [LICENSE](LICENSE).
 
-[Millen J. Theophilus](https://github.com/miltheo).
-
-## Licence
-
-Software: **GPL-3.0-only**; see [LICENSE](LICENSE).
-Data-distribution terms are separate; see [data](data/README.md).
+Maintainer: [Millen James Theophilus](https://github.com/miltheo),
+[ORCID](https://orcid.org/0000-0001-9823-7177).
+[Report an issue](https://github.com/miltheo/wam/issues) with the command, error and
+`sessionInfo()`; attach the relevant stage session record where available.

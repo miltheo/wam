@@ -31,12 +31,12 @@ RDS files are read with `readRDS()`; CSV files with `read.csv()`.
 
 Set `WAM_MASTER_ROOT` to relocate these inputs. Definitions and study methods
 are provided in the associated research article under submission; package-level
-documentation is maintained with Metronautica (repository link pending).
+documentation is maintained with [Metronautica](https://github.com/miltheo/metronautica).
 
 Optional native recordings are documented in [samples](../samples/README.md).
 They are independent of these full-cohort analysis inputs.
 
-Data-distribution terms are separate from the [GPL-3 software licence](../LICENSE).
-No data licence is assigned here.
+The master observations are distributed under **GPL-3.0-only**, the same licence
+as the WAM code; see [LICENSE](../LICENSE).
 
-Maintainer: [Millen J. Theophilus](https://github.com/miltheo).
+Maintainer: [Millen James Theophilus](https://github.com/miltheo).
