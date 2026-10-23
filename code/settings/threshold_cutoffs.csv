@@ -1,7 +1,10 @@
-metric,cutoff_mg,boundary,source,placement,source_url,cutoff_g,source_ENMO_cutoff_mg,derivation
-ENMO,44.8,Light or above,"Hildebrand et al. 2017, Table 3",Adult ActiGraph wrist,https://onlinelibrary.wiley.com/doi/10.1111/sms.12795,0.0448,44.8,Published cutoff transferred to native mechanical data
-ENMO,100.6,Moderate or above,"Hildebrand et al. 2014, Table 4",Adult ActiGraph wrist,https://doi.org/10.1249/MSS.0000000000000289,0.1006,100.6,Published cutoff transferred to native mechanical data
-ENMO,428.8,Vigorous,"Hildebrand et al. 2014, Table 4",Adult ActiGraph wrist,https://doi.org/10.1249/MSS.0000000000000289,0.4288,428.8,Published cutoff transferred to native mechanical data
-MAD,16.7,Light or above,"Vaha-Ypya et al. 2015a, Table 4, Limit 1",Adult waist,https://onlinelibrary.wiley.com/doi/10.1111/cpf.12127,0.0167,NA,Published cutoff transferred to native mechanical data
-MAD,91,Moderate or above,"Vaha-Ypya et al. 2015b, Optimal cut-points",Adult hip,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0134813,0.091,NA,Published cutoff transferred to native mechanical data
-MAD,414,Vigorous,"Vaha-Ypya et al. 2015b, Optimal cut-points",Adult hip,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0134813,0.414,NA,Published cutoff transferred to native mechanical data
+metric,cutoff_mg,boundary,source,placement,source_url,cutoff_g,derivation,source_MET
+ENMO,44.8,Light or above,"Hildebrand et al. 2017, Table 3",Adult ActiGraph wrist,https://onlinelibrary.wiley.com/doi/10.1111/sms.12795,0.0448,Published cutoff transferred to native mechanical data,NA
+ENMO,100.6,Moderate or above,"Hildebrand et al. 2014, Table 4",Adult ActiGraph wrist,https://doi.org/10.1249/MSS.0000000000000289,0.1006,Published cutoff transferred to native mechanical data,NA
+ENMO,428.8,Vigorous,"Hildebrand et al. 2014, Table 4",Adult ActiGraph wrist,https://doi.org/10.1249/MSS.0000000000000289,0.4288,Published cutoff transferred to native mechanical data,NA
+MAD,16.7,Light or above,"Vaha-Ypya et al. 2015a, Table 4, Limit 1",Adult waist,https://onlinelibrary.wiley.com/doi/10.1111/cpf.12127,0.0167,Published cutoff transferred to native mechanical data,NA
+MAD,91,Moderate or above,"Vaha-Ypya et al. 2015b, Optimal cut-points",Adult hip,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0134813,0.091,Published cutoff transferred to native mechanical data,NA
+MAD,414,Vigorous,"Vaha-Ypya et al. 2015b, Optimal cut-points",Adult hip,https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0134813,0.414,Published cutoff transferred to native mechanical data,NA
+SVMBP_069_10,1,Light or above,"Fridolfsson et al. 2021, Table 3, wrist, laboratory calibration",Adult left dorsal wrist; Axivity AX3; FEM 0.69-10 Hz,https://doi.org/10.3390/s21072333,0.001,Published wrist FEM cutoffs applied directly to measured native SVMbp stage means,1.5
+SVMBP_069_10,154,Moderate or above,"Fridolfsson et al. 2021, Table 3, wrist, laboratory calibration",Adult left dorsal wrist; Axivity AX3; FEM 0.69-10 Hz,https://doi.org/10.3390/s21072333,0.154,Published wrist FEM cutoffs applied directly to measured native SVMbp stage means,3
+SVMBP_069_10,519,Vigorous,"Fridolfsson et al. 2021, Table 3, wrist, laboratory calibration",Adult left dorsal wrist; Axivity AX3; FEM 0.69-10 Hz,https://doi.org/10.3390/s21072333,0.519,Published wrist FEM cutoffs applied directly to measured native SVMbp stage means,6

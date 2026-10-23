@@ -75,6 +75,11 @@ scripts are in `stages/`. Requested stages do not automatically run prerequisite
 Run `export` after the analyses to populate `results/`; a single analysis stage
 normally writes intermediate outputs under `analysis/`.
 
+Threshold transfer applies published ENMO, MAD and Fridolfsson laboratory wrist
+SVMbp cutoffs from [`threshold_cutoffs.csv`](settings/threshold_cutoffs.csv).
+Durations compare devices within each pipeline; cutoff sets are not matched
+across metrics and do not validate behavioural estimates.
+
 ## Paths and outputs
 
 | Location | Contents |
@@ -107,6 +112,7 @@ use a consistent engine environment for all stages of a reproduction run.
 | `Rscript code/checks/check_integration.R` | After engine installation/update | Package API, known-signal and statistical contracts |
 | `Rscript code/checks/check_tools.R` | Before analysis | R syntax, input integrity, registries and export formatting |
 | `Rscript code/checks/check_results.R` | After the complete workflow | Exported assets, hashes and expected study findings |
+| `Rscript code/checks/check_threshold_transfer.R` | After threshold transfer and export | Published cutoffs, master-derived features and illustrative durations |
 | `Rscript code/checks/check_samples.R` | When using optional samples | Catalogue and available recording checksums |
 | `Rscript code/checks/check_samples.R --require-all` | Before distributing all attachments | All nine compressed and restored recording checksums |
 
