@@ -1,5 +1,5 @@
 # Sample catalogue integrity checks ----
-# Input: catalogue and optional attachments.
+# Input: catalogue and compressed recordings.
 # Output: filename/checksum assertions.
 
 script <- sub("^--file=", "", grep("^--file=", commandArgs(), value = TRUE)[1L])
@@ -43,7 +43,7 @@ for (i in seq_len(nrow(index))) {
 catalogue <- file.path(dirname(root), "Metronautica/inst/extdata/native/sample_index.csv")
 if (file.exists(catalogue)) stopifnot(digest::digest(file = catalogue, algo = "sha256") == digest::digest(file = file.path(samples,
     "sample_index.csv"), algo = "sha256"))
-if ("--require-all" %in% args && length(missing)) stop("Missing release attachments: ", paste(missing,
+if ("--require-all" %in% args && length(missing)) stop("Missing native samples: ", paste(missing,
     collapse = ", "))
 cat("PASS: sample catalogue and", checked, "compressed/restored recordings verified;", length(missing),
-    "optional release attachments absent.\n")
+    "native samples absent.\n")

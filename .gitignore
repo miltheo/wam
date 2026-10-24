@@ -13,6 +13,3 @@ Rplots.pdf
 
 # Native examples restored into the working project by m_load_sample_data.
 /metronautica-samples/
-
-# Native sample payloads are distributed as release attachments.
-/samples/*.gz

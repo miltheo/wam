@@ -4,7 +4,7 @@ Optional recordings for [Metronautica](https://github.com/miltheo/metronautica)
 examples. WAM analyses use the [master observations](../data/README.md) and do not
 require these files.
 
-Nine gzip attachments total 63.4 MB compressed, approximately 250.2 MB restored:
+Nine gzip recordings total 63.4 MB compressed, approximately 250.2 MB restored:
 static and dynamic recordings for LEAP, AX3, SENS motion and GENEActiv, plus one
 primary HBK reference. Static files cover the analysed 24 hours; dynamic files
 retain all ten stages and intervening adjustments of the first primary trial.
@@ -14,15 +14,14 @@ retain all ten stages and intervening adjustments of the first primary trial.
 
 ## Obtain the recordings
 
-Recording payloads are separate release attachments, excluded from Git history;
-cloning this repository does not obtain them. Place the required `.gz` files in
-`samples/` beside `sample_index.csv`.
+Clone or download WAM. The nine `.gz` recordings and `sample_index.csv` are
+included in `samples/`; no separate release download is required.
 
 For a dynamic example, obtain **both the wearable recording and
 `dynamic_reference_primary.csv.gz`**: the loader includes the reference by default.
-For example, LEAP requires `dynamic_leap.agsd.gz` plus that reference attachment.
+For example, LEAP uses `dynamic_leap.agsd.gz` plus that reference recording.
 Use `include_reference = FALSE` when only the wearable file is required.
-Static retrieval requires only the selected static attachment.
+Static retrieval requires only the selected static recording.
 
 ## Use with Metronautica
 
@@ -32,7 +31,7 @@ for `m_load_sample_data()` configuration, parsing, metrology and plots.
 cover local/remote retrieval and checksum verification. The catalogue supplies
 each recording's timestamp shift, measurement span and analysis bounds.
 
-## Verify and distribute
+## Verify the recordings
 
 In a terminal from the WAM root:
 
@@ -41,8 +40,7 @@ Rscript code/checks/check_samples.R --require-all
 ```
 
 Without `--require-all`, the check verifies available files and reports missing
-attachments. When publishing the recordings, include the catalogue, provenance,
-release metadata and repository licence with the attachments.
+recordings. Keep the recordings, catalogue and provenance together.
 
 Native recordings and accompanying metadata are distributed under **GPL-3.0-only**,
 the same licence as the WAM code; see [LICENSE](../LICENSE).

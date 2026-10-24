@@ -36,7 +36,7 @@ Rscript code/checks/check_results.R
 |---|---|
 | [code](code/README.md) | Analysis stages, figures, settings and checks |
 | [data](data/README.md) | Full-cohort master observations and input checksums |
-| [samples](samples/README.md) | Optional native-recording catalogue; payloads are separate release attachments |
+| [samples](samples/README.md) | Native recording examples, catalogue and provenance for Metronautica |
 | [3d-clips](3d-clips/README.md) | Mounting models, previews and model dimensions |
 
 Generated `analysis/` and `results/` directories are excluded from Git. The export

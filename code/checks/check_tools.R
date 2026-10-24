@@ -39,6 +39,6 @@ stopifnot(!length(list.files(file.path(root, "code"), pattern = "[.]py$")), !any
     c("tests", "config", "docs")))), !exists("script", envir = e, inherits = FALSE), !file.exists(file.path(root,
     "manuscript")), !file.exists(file.path(root, "code/signal_features.R")), all(dir.exists(file.path(root,
     c("code/analysis", "code/checks", "code/settings", "3d-clips/previews")))))
-stopifnot("/samples/*.gz" %in% readLines(file.path(root, ".gitignore")), "data/**/*.csv -text" %in% readLines(file.path(root,
-    ".gitattributes")))
+stopifnot(!("/samples/*.gz" %in% readLines(file.path(root, ".gitignore"))),
+    all(c("data/**/*.csv -text", "samples/*.gz binary") %in% readLines(file.path(root, ".gitattributes"))))
 cat("PASS: R syntax, master integrity, asset registries, CSV/LaTeX formatting and R-only dependencies.\n")

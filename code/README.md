@@ -108,7 +108,7 @@ Run these in a terminal from the WAM root:
 | `Rscript code/checks/check_tools.R` | R syntax, master integrity, registries and export formatting |
 | `Rscript code/checks/check_threshold_transfer.R` | Published cutoffs and illustrative durations after threshold transfer and export |
 | `Rscript code/checks/check_samples.R` | Catalogue and available optional recording checksums |
-| `Rscript code/checks/check_samples.R --require-all` | All nine attachments before distribution |
+| `Rscript code/checks/check_samples.R --require-all` | All nine included native recordings |
 
 Checks do not refit models. Missing optional samples are permitted unless
 `--require-all` is supplied.

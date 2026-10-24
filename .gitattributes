@@ -4,6 +4,7 @@ data/**/*.rds -text
 data/**/*.csv -text
 samples/*.csv -text
 samples/*.json -text
+samples/*.gz binary
 3d-clips/*.3mf -text
 *.png binary
 *.pdf binary
