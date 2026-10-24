@@ -3,11 +3,17 @@
 Wearable Accelerometers Metrology (WAM): master observations and R analyses
 supporting the associated research article under submission.
 
-**Master observations &rarr; analysis stages &rarr; intermediate results &rarr; numbered figures and tables.**
-
 WAM reproduces selected code-generated article assets from the supplied masters.
 Native recordings are optional examples for [Metronautica](https://github.com/miltheo/metronautica);
 they are not required to reproduce these analyses.
+
+## Workflow
+
+![Master observations pass through WAM analysis stages to intermediate results, then export produces numbered assets. Optional native samples support a separate Metronautica example workflow.](code/workflow.svg)
+
+[Full reproduction](code/README.md#reproduce-everything) ·
+[Selected stages and prerequisites](code/README.md#run-a-selected-stage) ·
+[Output index](code/OUTPUTS.md)
 
 ## Get started
 
@@ -16,20 +22,13 @@ Run these commands in a terminal from the WAM repository root:
 
 ```sh
 Rscript code/run.R --check
-Rscript code/run.R --list
-Rscript code/run.R static
-```
-
-The static stage creates local outputs under `analysis/static/`. To reproduce
-all registered assets and verify the completed run:
-
-```sh
 Rscript code/run.R all
 Rscript code/checks/check_results.R
 ```
 
-[Execution and prerequisites](code/README.md) &middot; [Output index](code/OUTPUTS.md) &middot;
-[Verification](code/README.md#verification).
+`all` includes export. For one analysis, use a
+[named stage](code/README.md#run-a-selected-stage); prerequisites are explicit.
+[Verification options](code/README.md#verification).
 
 ## Contents
 

@@ -24,20 +24,13 @@ For example, LEAP requires `dynamic_leap.agsd.gz` plus that reference attachment
 Use `include_reference = FALSE` when only the wearable file is required.
 Static retrieval requires only the selected static attachment.
 
-No release URL is configured by default. For remote retrieval, supply the actual
-published release-attachment directory as `base_url` or
-`options(metronautica.sample_base_url = ...)`. The loader downloads only when
-explicitly called; installation and ordinary package use require no WAM access.
-
 ## Use with Metronautica
 
-Use the [Metronautica loader guide](https://github.com/miltheo/metronautica/blob/main/docs/REAL_DATA_EXAMPLES.md#sample-retrieval)
-for `m_load_sample_data()` configuration and the
-[worked examples](https://github.com/miltheo/metronautica/blob/main/docs/GETTING_STARTED.md#real-recording-examples)
-for parsing, metrology and plots. Each recording's timestamp shift, range and
-analysis bounds are supplied by the catalogue; apply the reference recording's
-own settings separately. The loader verifies compressed/restored checksums and
-writes provenance sidecars without modifying the source attachments.
+Follow [Getting Started](https://github.com/miltheo/metronautica/blob/main/docs/GETTING_STARTED.md#real-recording-examples)
+for `m_load_sample_data()` configuration, parsing, metrology and plots.
+[Loader parameters](https://github.com/miltheo/metronautica/blob/main/man/m_load_sample_data.Rd)
+cover local/remote retrieval and checksum verification. The catalogue supplies
+each recording's timestamp shift, measurement span and analysis bounds.
 
 ## Verify and distribute
 

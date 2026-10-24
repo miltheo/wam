@@ -1,22 +1,22 @@
-number,source
-3,static/figures/static_profile_300dpi.png
-4,dynamic_native/figures/native_dynamic_profile_300dpi.png
-5,dynamic_processing/figures/composite_error_300dpi.png
-6,features/primary_native/figures/equivalence_10.png
-7,features/primary_native/figures/response_10.png
-8,threshold_transfer/threshold-transfer.png
-S1,hardware/device_clips.png
-S2,diagnostics/figures/allan_representative.png
-S3,secondary_native/figures/native_dynamic_profile_300dpi.png
-S4,features/context/orientation_context.png
-S5,dynamic_processing/figures/processing_linearity_300dpi.png
-S6,diagnostics/figures/spectral_audit.png
-S7,features/primary_native/figures/pairs_10.png
-S8,features/primary_pipeline_10.png
-S9,features/secondary_native/figures/equivalence_10.png
-S10,features/secondary_native/figures/response_10.png
-S11,features/secondary_native/figures/pairs_10.png
-S12,threshold_transfer/mad-threshold-transfer.png
-S13,frequency/figures/native_frequency_tracking.png
-S14,frequency/figures/frequency_estimators_600dpi.png
-S15,activation/figures/activation_response.png
+number,source,title
+3,static/figures/static_profile_300dpi.png,Static characterisation
+4,dynamic_native/figures/native_dynamic_profile_300dpi.png,Native dynamic response: primary comparison
+5,dynamic_processing/figures/composite_error_300dpi.png,Composite error across processing pipelines
+6,features/primary_native/figures/equivalence_10.png,Feature equivalence: primary comparison
+7,features/primary_native/figures/response_10.png,Feature response: primary comparison
+8,threshold_transfer/threshold-transfer.png,Exploratory drift and threshold transfer
+S1,hardware/device_clips.png,Device mounting clips
+S2,diagnostics/figures/allan_representative.png,Representative Allan deviation
+S3,secondary_native/figures/native_dynamic_profile_300dpi.png,Native dynamic response: secondary comparison
+S4,features/context/orientation_context.png,Gravity-vector orientation
+S5,dynamic_processing/figures/processing_linearity_300dpi.png,VM integral non-linearity across processing pipelines
+S6,diagnostics/figures/spectral_audit.png,Axis-specific spectral diagnostics
+S7,features/primary_native/figures/pairs_10.png,Pairwise feature equivalence: primary comparison
+S8,features/primary_pipeline_10.png,Feature-pipeline criteria: primary comparison
+S9,features/secondary_native/figures/equivalence_10.png,Feature equivalence: secondary comparison
+S10,features/secondary_native/figures/response_10.png,Feature response: secondary comparison
+S11,features/secondary_native/figures/pairs_10.png,Pairwise feature equivalence: secondary comparison
+S12,threshold_transfer/mad-threshold-transfer.png,Exploratory MAD threshold transfer
+S13,frequency/figures/native_frequency_tracking.png,Frequency tracking
+S14,frequency/figures/frequency_estimators_600dpi.png,Frequency-estimator comparison
+S15,activation/figures/activation_response.png,Low-excitation response

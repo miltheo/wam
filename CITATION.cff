@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it using the metadata in this file."
+message: "If you use these data or analysis scripts, please cite this repository using the metadata below."
 title: "WAM: Wearable Accelerometers Metrology"
 type: software
 authors:

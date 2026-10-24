@@ -46,19 +46,15 @@ without the additional dynamic VM calibration; calibrated observations retain
 their signal-pipeline and calibration fields. Each file stores observations,
 not independent participants or already pooled device estimates.
 
-For outcome definitions and units, use Metronautica's installed
+For outcome definitions and units, use [Metronautica](https://github.com/miltheo/metronautica)'s installed
 `help("measurement-definitions", package = "metronautica")` and linked function
 references. Feature values follow `metric_unit`; suffixes such as `_g`, `_mg`,
 `_hz` and `_percent` identify units where present. Unsuffixed legacy fields must
 be interpreted using the corresponding function reference; a fraction is not
 a percentage. Study-level definitions remain in the research article.
 
-Set `WAM_MASTER_ROOT` to relocate these inputs. Definitions and study methods
-are provided in the associated research article under submission; package-level
-documentation is maintained with [Metronautica](https://github.com/miltheo/metronautica).
-
-Optional native recordings are documented in [samples](../samples/README.md).
-They are independent of these full-cohort analysis inputs.
+Set `WAM_MASTER_ROOT` to relocate these inputs. Optional
+[native samples](../samples/README.md) are separate from the full-cohort masters.
 
 The master observations are distributed under **GPL-3.0-only**, the same licence
 as the WAM code; see [LICENSE](../LICENSE).
